@@ -2,6 +2,7 @@ import json
 import subprocess
 import os
 import sys
+import shutil
 
 # source venv/bin/activate
 # python transcribe.py audio/podcast.mp3 medium
@@ -33,7 +34,6 @@ result = {
     "showName": "",
     "episodeName": "",
     "publishDate": "",
-    "imageName": "",
     "transcription": "",
 }
 
@@ -47,7 +47,7 @@ result["transcription"] = words
 with open('output/' + file_name + '.json', 'w') as file:
     json.dump(result, file)
 
-os.remove(file_name + '.json')
-
+# Save the raw Whisper output in case I ever want to process it again.
+shutil.move(file_name + '.json', "whisper-results")
 
 
