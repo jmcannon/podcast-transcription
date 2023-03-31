@@ -4,6 +4,8 @@ import os
 import sys
 import shutil
 
+# Whisper does not work on Python 3.11!
+
 # source venv/bin/activate
 # python transcribe.py audio/podcast.mp3 medium
 
